@@ -1,0 +1,58 @@
+body {
+   background: rgb(177, 24, 177);
+   color: white;
+   padding: 20px;
+}
+.value {
+   font-size: 50px;
+   padding: 20px;
+   padding-left: 20px;
+   display: block;
+}
+input,
+textarea {
+   color: black;
+   width: 191.7px;
+   font-size: 30px;
+}
+textarea {
+   width: 800px;
+   height: 100px;
+}
+button {
+   width: 50px;
+   height: 50px;
+   font-size: 40px;
+}
+button:last-child {
+   width: 150px;
+}
+
+div {
+   font-size: 20px;
+}
+
+@media screen and (max-width: 900px) {
+   textarea {
+      width: 600px;
+      height: 100px;
+   }
+}
+@media screen and (max-width: 700px) {
+   textarea {
+      width: 400px;
+      height: 100px;
+   }
+}
+@media screen and (max-width: 450px) {
+   input,
+   textarea {
+      color: black;
+      width: 195.7px;
+      font-size: 30px;
+   }
+   textarea {
+      width: 90%;
+      height: 100px;
+   }
+}
