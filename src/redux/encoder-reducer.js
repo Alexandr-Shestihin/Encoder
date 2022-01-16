@@ -39,13 +39,21 @@ const encoderReducer = (state = initialised, action) => {
             let result = '';
             let pass = Number(state.passwordValue);
             let sign = action.choose || -1;// выбираем знак минус или плюс
-
+            // неочевидное применение
+            // лучше let sign = action.choose
+            // в action.choose передавать нужное значение
+            // а лучше как-то так: 
+            // const sign = action.operation === 'decode' ? -1 : 1
+            // а еще лучше вынести эту логику в отдельную функцию
+            // const coder = (operation) => { код }
+            // и тогда, здесь можно будет написать просто: 
+            // const result = coder(action.operation)
             for (let key of state.textForEncoder) {
                let resultIss = key.codePointAt() + (pass * sign) - ((pass / 2) * sign) + ((pass ** (1 / 2)) * sign);
 
                result += String.fromCodePoint(resultIss.toFixed(0));
             }
-            return {
+            return { // это не будет работоать после else должны быть { и тут уже код}
                ...state,
                textResult: result,
             }
@@ -71,6 +79,8 @@ export const updatePasswordValueAC = (text) => {
 export const deleteTextActionCreator = () => {
    return { type: DELETE_TEXT }
 }
+// const coderAC = (operation) => ({ type: CODER, operation })
+// operation будет 'decode' или 'encode'
 export const encoderActionCreator = () => {
    return { type: CODER, choose: 1 }
 }
